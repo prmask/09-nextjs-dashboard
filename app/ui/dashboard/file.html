@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouseover Popup Form</title>
+    <style>
+      .popup-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .popup-form {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 15px;
+        z-index: 1;
+        width: 200px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Show the form on mouse hover */
+      .popup-container:hover .popup-form {
+        display: block;
+      }
+
+      .popup-form input[type='text'],
+      .popup-form input[type='submit'] {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      /* Styles for the popup when hovering over the submit button */
+      .submit-popup {
+        display: none;
+        position: absolute;
+        top: 120%; /* Appear below the submit button */
+        left: 0; /* Align to the left of the submit button */
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 2;
+        width: 200px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Make the form visible when hovering over the container or the popup */
+      .submit-container:hover .submit-popup,
+      .submit-popup:hover {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main form container -->
+    <div class="popup-container">
+      <button>Hover me!</button>
+      <div class="popup-form">
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" />
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" />
+
+          <!-- Submit button with nested popup that includes another form -->
+          <div class="submit-container" style="position: relative">
+            <input type="submit" value="Submit" />
+
+            <!-- Popup form with checkbox, positioned below the submit button -->
+            <div class="submit-popup">
+              <form>
+                <label for="confirm">Check to confirm:</label>
+                <input type="checkbox" id="confirm" name="confirm" />
+                <br />
+                <label for="terms">Agree to terms:</label>
+                <input type="checkbox" id="terms" name="terms" />
+                <br />
+                <input type="submit" value="Confirm" />
+              </form>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
